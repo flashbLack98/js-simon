@@ -25,11 +25,9 @@ alert(`ricordati questi numeri ${listRandomNumber}`);
 console.log(`questa è la lista di num random ${listRandomNumber}`);
 
 
-setTimeout(myFunction, 2000);
+setTimeout(myFunction, 30000);
 
-
-
-let numIncluded = false;
+const numIncluded = [];
 
 //--------------------- INIZIO FUNZIONI------------------------//
 function myFunction() {
@@ -41,23 +39,32 @@ function myFunction() {
         //controllo se ogni numero della lista utente è compreso nella lista random 
 
         if (listRandomNumber.includes(userListNum[i])) {
-            //numIncluded = true;
-            alert(`il numero alla posizione ${i + 1} è giusto`);
-        } else {
-            alert("il numero non è giusto");
+            numIncluded.push(userListNum[i]);
         }
 
     }
-    //se tutti i numeri della lista dell'utente sono uguali alla lista random allora hai vinto
-    if (numIncluded) {
-        alert("hai vinto");
-    }
-
 
     console.log(userListNum);
     console.log(listRandomNumber);
+
+
+    //se la lunghezza dell'array dei numeri esistenti è 5 hai vinto
+    /*   if (numIncluded.length === 5) {
+          alert("hai vinto");
+      } else {
+          alert("hai perso");
+      } */
+
+
+    risultato(numIncluded.length, listRandomNumber.length);
 }
 
+
+function risultato(lunghezzaLista, lunghezzaListaRandom) {
+    if (lunghezzaLista === lunghezzaListaRandom) {
+        alert(`hai vinto, hai indovinato tutti i numeri che sono ${numIncluded}`);
+    } else if (lunghezzaLista !== lunghezzaListaRandom) {
+        alert(`hai perso, hai indovinato solo ${lunghezzaLista} numeri, hai indovinato ${numIncluded}`);
+    }
+}
 //--------------------- FINE FUNZIONI------------------------//
-
-
